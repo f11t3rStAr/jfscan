@@ -173,6 +173,11 @@ class ArgumentHandler:
             help="nmap arguments, e. g., --nmap-options='-sV' or --nmap-options='-sV --script ssh-auth-methods'",
         )
         group_nmap.add_argument(
+            "--base64-nmap-options",
+            action="store",
+            help="base64 decode nmap-option"
+        )
+        group_nmap.add_argument(
             "--nmap-threads",
             action="store",
             type=int,
@@ -266,6 +271,8 @@ class ArgumentHandler:
         self.output = args.output
         self.nmap = args.nmap
         self.nmap_options = args.nmap_options
+        # print(args.nmap_options)
+        self.nmap_base64_options = args.base64_nmap_options
         self.nmap_threads = args.nmap_threads
         self.nmap_output = args.nmap_output
 

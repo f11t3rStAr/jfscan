@@ -1,5 +1,6 @@
 # pylint: disable=import-error
 #!/usr/bin/env python3
+import base64
 import logging
 import time
 
@@ -184,7 +185,12 @@ def main():
                 nmap.threads = arguments.nmap_threads
 
             if arguments.nmap_options is not None:
+                print(type(arguments.nmap_options))
                 nmap.options = arguments.nmap_options
+
+            if arguments.nmap_base64_options is not None:
+                nmap.options = base64.b64decode(arguments.nmap_base64_options).decode('utf-8')
+                pass
 
             nmap.run(res)
 
